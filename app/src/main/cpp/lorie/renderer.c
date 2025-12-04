@@ -267,6 +267,9 @@ void rendererInit(JNIEnv* env) {
 void rendererSetFiltering(JNIEnv* env, jobject self, jint f) {
     filtering = f;
 }
+void rendererSetFiltering(JNIEnv* env, jobject self, jint f) {
+    filtering = f;
+}
 
 void rendererTestCapabilities(int* legacy_drawing, uint8_t* flip) {
     // Some devices do not support sampling from HAL_PIXEL_FORMAT_BGRA_8888, here we are checking it.
