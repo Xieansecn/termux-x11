@@ -47,31 +47,21 @@ public class CmdEntryPoint extends ICmdEntryInterface.Stub {
      */
     public static void main(String[] args) {
         android.util.Log.i("CmdEntryPoint", "commit " + BuildConfig.COMMIT);
-		// ZeroTermux add {@
-        Log.d("SurfaceChangedListener", " main...... ");
-		// @}
         handler.post(() -> new CmdEntryPoint(args));
         Looper.loop();
     }
 	// ZeroTermux add {@
     public static void mainZeroTermux(String[] args) {
         android.util.Log.i("CmdEntryPoint", "commit " + BuildConfig.COMMIT);
-        Log.d("SurfaceChangedListener", " main...... ");
         handler.post(() -> new CmdEntryPoint(args));
         Looper.loop();
     }
 	// @}
     CmdEntryPoint(String[] args) {
         if (!start(args)) {
-			// ZeroTermux add {@
-            Log.i("CmdEn", "start is false");
-			// @}
             System.exit(1);
         }
-			// ZeroTermux add {@
-        Log.i("CmdEn", "start landing......");
-        Log.d("SurfaceChangedListener", " start landing...... ");
-		// @}
+
         spawnListeningThread();
         sendBroadcastDelayed();
     }
@@ -94,7 +84,6 @@ public class CmdEntryPoint extends ICmdEntryInterface.Stub {
         intent.setPackage(targetPackage);
 		// ZeroTermux add {@
 		intent.setClassName(targetPackage, CmdEntryPointStartReceiver.class.getName());
-        Log.d("SurfaceChangedListener", " send bundle :" + bundle);
 		// @}
         if (getuid() == 0 || getuid() == 2000)
             intent.setFlags(0x00400000 /* FLAG_RECEIVER_FROM_SHELL */);
@@ -239,13 +228,7 @@ public class CmdEntryPoint extends ICmdEntryInterface.Stub {
     // In some cases Android Activity part can not connect opened port.
     // In this case opened port works like a lock file.
     private void sendBroadcastDelayed() {
-		// ZeroTermux add {@
-        Log.d("SurfaceChangedListener", " send intent111 : " + intent);
-		// @}
         if (!connected()) {
-			// ZeroTermux add {@
-            Log.d("SurfaceChangedListener", " send intent : " + intent);
-			// @}
             sendBroadcast(intent);
         }
 

@@ -105,9 +105,6 @@ public class LoriePreferences extends AppCompatActivity implements PreferenceFra
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-		// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx0005: ");
-		// @}
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus)
             updatePreferencesLayout();
@@ -124,28 +121,17 @@ public class LoriePreferences extends AppCompatActivity implements PreferenceFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = new Prefs(this);
-		// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx1: ");
         LoriePreferenceFragment loriePreferenceFragment = new LoriePreferenceFragment(null);
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx1.1: ");
-		// @}
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content, loriePreferenceFragment).commit();
-		// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx2: ");
-		// @}
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
-		// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx3: ");
-		// @}
+
         Uri ENABLED_ACCESSIBILITY_SERVICES = Settings.Secure.getUriFor(Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
         Uri ACCESSIBILITY_ENABLED = Settings.Secure.getUriFor(Settings.Secure.ACCESSIBILITY_ENABLED);
-		// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx4: ");
-		// @}
         getContentResolver().registerContentObserver(ENABLED_ACCESSIBILITY_SERVICES, true, accessibilityObserver);
         getContentResolver().registerContentObserver(ACCESSIBILITY_ENABLED, true, accessibilityObserver);
     }
@@ -166,9 +152,6 @@ public class LoriePreferences extends AppCompatActivity implements PreferenceFra
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    	// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx0004: ");
-		// @}
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
@@ -184,9 +167,6 @@ public class LoriePreferences extends AppCompatActivity implements PreferenceFra
     }
 
     private void showFragment(PreferenceFragmentCompat fragment) {
-    	// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx0003: ");
-		// @}
         getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right)
                 .replace(android.R.id.content, fragment)
@@ -196,9 +176,6 @@ public class LoriePreferences extends AppCompatActivity implements PreferenceFra
 
     @Override
     public boolean onPreferenceStartFragment(@NonNull PreferenceFragmentCompat caller, @NonNull Preference pref) {
-    	// ZeroTermux add {@
-        Log.i("TAG", "onCreate xxxxxxxxxxxxxxxx0002: ");
-		// @}
         final LoriePreferenceFragment fragment = new LoriePreferenceFragment(pref.getFragment());
         fragment.setTargetFragment(caller, 0);
         showFragment(fragment);

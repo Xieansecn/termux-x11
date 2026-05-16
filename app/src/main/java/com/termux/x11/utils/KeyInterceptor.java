@@ -98,10 +98,8 @@ public class KeyInterceptor extends AccessibilityService {
         }
     }
 
-	// ZeroTermux delete {@
-   /* @Override
+    @Override
     public boolean onKeyEvent(KeyEvent event) {
-        Log.i("TAG", "handleKey onKeyEvent...");
         boolean ret = false;
         MainActivity instance = MainActivity.getInstance();
 
@@ -124,8 +122,7 @@ public class KeyInterceptor extends AccessibilityService {
         recheck();
 
         return ret;
-    }*/
-	// @}
+    }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent e) {}
